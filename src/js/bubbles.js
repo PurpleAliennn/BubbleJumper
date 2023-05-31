@@ -2,10 +2,11 @@ import { Actor, CollisionType, Vector, Shape, Input } from "excalibur";
 import { Resources, ResourceLoader } from './resources.js';
 import { Bottom } from "./bottomborder.js";
 import { Platform } from "./platform.js";
+import { Cloud } from "./cloud.js";
 
 export class Bubbles extends Actor {
 
-    lives
+    health
     damage
     grounded
 
@@ -44,6 +45,11 @@ export class Bubbles extends Actor {
             console.log("you're on a platform");
             this.grounded = true;
         } 
+
+        if(event.other instanceof Cloud){
+            console.log("you're on a cloud");
+            this.grounded = true;
+        } 
     }
 
     onPreUpdate(engine, delta) {
@@ -69,6 +75,7 @@ export class Bubbles extends Actor {
             if(engine.input.keyboard.wasPressed(Input.Keys.B)) {
                 yspeed = -40
                 this.grounded = false;
+                // this.game.bubbleJump(this.pos.x, this.pos.y);
             }
         }
 
@@ -76,6 +83,10 @@ export class Bubbles extends Actor {
         this.vel = new Vector(xspeed, this.vel.y);
 
         engine.currentScene.camera.y = this.pos.y - 175;
+
+    }
+
+    takeDamage(){
 
     }
    

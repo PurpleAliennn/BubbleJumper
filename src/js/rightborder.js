@@ -11,7 +11,7 @@ export class Right extends Actor {
     }
 
     onInitialize() {
-        this.pos = new Vector(846,300);
+        this.pos = new Vector(811,-1500);
 
         this.graphics.add(Resources.BorderRight.toSprite());
 

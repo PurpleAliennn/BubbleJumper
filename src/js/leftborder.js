@@ -11,7 +11,7 @@ export class Left extends Actor {
     }
 
     onInitialize(){
-        this.pos = new Vector(-30,300);
+        this.pos = new Vector(-12,-1500);
 
         this.graphics.add(Resources.BorderLeft.toSprite());
 
