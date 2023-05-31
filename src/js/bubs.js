@@ -8,8 +8,8 @@ export class Bubs extends Actor {
     constructor(x, y) {
 
         super({ 
-            x: x + Math.random() * 20, 
-            y: y + Math.random() * 20 
+            x: x + Math.random() * 50, 
+            y: y + Math.random() * 50 
         })
 
         this.rand = new Random();
@@ -28,7 +28,7 @@ export class Bubs extends Actor {
 
         this.graphics.use(this.rand.pickOne(sprArray));
 
-        const sc = Math.random() * 0.8 + 0.2;
+        const sc = Math.random() * 0.15 + 0.15;
 
         this.scale = new Vector(sc, sc);
         this.rotation = Math.random() * 2;

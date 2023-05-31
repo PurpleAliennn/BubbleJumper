@@ -22,7 +22,9 @@ export class Bubbles extends Actor {
         });
     }
 
-    onInitialize(){
+    onInitialize(engine){
+
+        this.game = engine
 
         this.body.useGravity = true;
 
@@ -75,7 +77,7 @@ export class Bubbles extends Actor {
             if(engine.input.keyboard.wasPressed(Input.Keys.B)) {
                 yspeed = -40
                 this.grounded = false;
-                // this.game.bubbleJump(this.pos.x, this.pos.y);
+                this.game.currentScene.bubbleJump(this.pos.x, this.pos.y);
             }
         }
 
