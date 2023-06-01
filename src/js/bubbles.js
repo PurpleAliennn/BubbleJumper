@@ -39,12 +39,20 @@ export class Bubbles extends Actor {
 
         this.body.collisionType = CollisionType.Active;
 
-        this.graphics.add(Resources.Bubbles.toSprite());
+        this.graphics.add('HappyBubbles',Resources.Bubbles.toSprite());
         this.graphics.add('MadBubbles',Resources.MadBubbles.toSprite());
         this.graphics.add('SadBubbles',Resources.SadBubbles.toSprite());
         this.scale = new Vector (0.4,0.4);
 
+        this.graphics.use('HappyBubbles');
+
         this.on('collisionstart', (event) => { this.isGrounded(event)} );
+    }
+
+    reset(){
+
+        this.graphics.use('HappyBubbles');
+        
     }
 
     isGrounded(event){
