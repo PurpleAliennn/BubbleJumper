@@ -13,6 +13,9 @@ import { Bubs } from "./bubs.js";
 
 export class Level1 extends Scene {
 
+    crabRed
+    bubbles
+
     constructor(){
         super({
             width: 800, 
@@ -33,6 +36,12 @@ export class Level1 extends Scene {
         }
     }
 
+    onActivate(ctx){
+
+        this.bubbles.pos = new Vector(10, 500);
+        this.crabRed.pos = new Vector(625, 314);
+    }
+
     onInitialize(engine){
 
         const background = new BackGround();
@@ -47,13 +56,13 @@ export class Level1 extends Scene {
         const wallRight = new Right();
         this.add(wallRight);
 
-        const bubbles = new Bubbles();
-        this.add(bubbles);
-        bubbles.pos = new Vector (10, 500);
+        this.bubbles = new Bubbles();
+        this.add(this.bubbles);
+        this.bubbles.pos = new Vector (10, 500);
 
-        const crabRed = new RedCrab();
-        this.add(crabRed);
-        crabRed.pos = new Vector (625, 314);
+        this.crabRed = new RedCrab();
+        this.add(this.crabRed);
+        this.crabRed.pos = new Vector (625, 314);
 
         const platform = new Platform();
         this.add(platform);

@@ -32,8 +32,6 @@ export class Game extends Engine {
 
         this.addScene('gameOver', new GameOver());
 
-        this.addScene('levelone', new Level1());
-
     }
 }
 

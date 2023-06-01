@@ -23,6 +23,14 @@ export class Bubbles extends Actor {
         });
     }
 
+    onActivate(ctx) {
+
+        this.bubbles.pos = new Vector(10, 500);
+      
+        this.bubbles.reset();
+      
+    }
+
     onInitialize(engine){
 
         this.game = engine

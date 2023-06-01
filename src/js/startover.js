@@ -21,7 +21,7 @@ export class NewGame extends Actor {
         this.enableCapturePointer = true;
         this.pointer.useGraphicsBounds = true;
         
-        this.on("pointerup", (event) =>  engine.goToScene('levelone'))
+        this.on("pointerup", (event) =>  engine.goToScene('level1'))
         
     }
 
