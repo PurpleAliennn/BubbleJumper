@@ -7,6 +7,7 @@ import { Resources, ResourceLoader } from './resources.js';
 // import { Right } from './rightborder.js';
 // import { Platform } from './platform.js';
 import { Level1 } from './level1.js';
+import { GameOver } from './gameover.js';
 
 
 export class Game extends Engine {
@@ -28,6 +29,10 @@ export class Game extends Engine {
 
         this.addScene('level1', new Level1());
         this.goToScene('level1');
+
+        this.addScene('gameOver', new GameOver());
+
+        this.addScene('levelone', new Level1());
 
     }
 }

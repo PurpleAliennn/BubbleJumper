@@ -32,6 +32,7 @@ export class RedCrab extends Actor {
     hit(event) {
         if(event.other instanceof Bubbles){
             console.log("Ouch!");
+            event.other.takeDamage(25);
             //remove half heart health from Bubbles`
         }
     }

@@ -87,37 +87,5 @@ export class Level1 extends Scene {
             cloud.pos = p;
             this.add(cloud);
           }
-
-        // const cloud = new Cloud();
-        // this.add(cloud);
-        // cloud.pos = new Vector(530, -150);
-
-        // const cloud2 = new Cloud();
-        // this.add(cloud2);
-        // cloud2.pos = new Vector(400, -420);
-
-        // const cloud3 = new Cloud();
-        // this.add(cloud3);
-        // cloud3.pos = new Vector(200, -580);
-
-        // const cloud4 = new Cloud();
-        // this.add(cloud4);
-        // cloud4.pos = new Vector(610, -755);
-
-        // const cloud5 = new Cloud();
-        // this.add(cloud5);
-        // cloud5.pos = new Vector(300, -940);
-
-        // const cloud6 = new Cloud();
-        // this.add(cloud6);
-        // cloud6.pos = new Vector(155, -1230);
-
-        // const cloud7 = new Cloud();
-        // this.add(cloud7);
-        // cloud7.pos = new Vector(630, -1500);
-
-        // const cloud8 = new Cloud();
-        // this.add(cloud8);
-        // cloud8.pos = new Vector(360, -1760);
     }
 }

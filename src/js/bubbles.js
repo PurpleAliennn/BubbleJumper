@@ -3,10 +3,11 @@ import { Resources, ResourceLoader } from './resources.js';
 import { Bottom } from "./bottomborder.js";
 import { Platform } from "./platform.js";
 import { Cloud } from "./cloud.js";
+import { GameOver } from "./gameover.js";
 
 export class Bubbles extends Actor {
 
-    health
+    health = 100;
     damage
     grounded
 
@@ -31,6 +32,8 @@ export class Bubbles extends Actor {
         this.body.collisionType = CollisionType.Active;
 
         this.graphics.add(Resources.Bubbles.toSprite());
+        this.graphics.add('MadBubbles',Resources.MadBubbles.toSprite());
+        this.graphics.add('SadBubbles',Resources.SadBubbles.toSprite());
         this.scale = new Vector (0.4,0.4);
 
         this.on('collisionstart', (event) => { this.isGrounded(event)} );
@@ -59,6 +62,7 @@ export class Bubbles extends Actor {
         let xspeed = 0;
         let yspeed = 0;
 
+
         if(engine.input.keyboard.isHeld(Input.Keys.D)) {
            xspeed = 230;
         }
@@ -68,6 +72,7 @@ export class Bubbles extends Actor {
         }
 
         console.log(this.grounded)
+        
         if(this.grounded) {
             if(engine.input.keyboard.wasPressed(Input.Keys.Space)) {
                 yspeed = -30;
@@ -75,7 +80,7 @@ export class Bubbles extends Actor {
             }
         
             if(engine.input.keyboard.wasPressed(Input.Keys.B)) {
-                yspeed = -40
+                yspeed = -40;
                 this.grounded = false;
                 this.game.currentScene.bubbleJump(this.pos.x, this.pos.y);
             }
@@ -88,8 +93,16 @@ export class Bubbles extends Actor {
 
     }
 
-    takeDamage(){
+    takeDamage(amount){
 
+        console.log("I take damage " + amount);
+        this.health -= amount;
+
+        this.graphics.use('SadBubbles');
+
+        if(this.health < 1 ){
+            this.game.goToScene('gameOver', new GameOver());
+        }
     }
    
     run(){
