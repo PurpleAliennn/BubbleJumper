@@ -4,6 +4,7 @@ import { Bottom } from "./bottomborder.js";
 import { Platform } from "./platform.js";
 import { Cloud } from "./cloud.js";
 import { GameOver } from "./gameover.js";
+import { BubBullets } from "./bubbullet.js";
 
 export class Bubbles extends Actor {
 
@@ -100,9 +101,9 @@ export class Bubbles extends Actor {
             }
         }
 
-        // if(engine.input.keyboard.wasPressed(Input.Keys.L)) {
-        //     this.attack();
-        // }
+        if(engine.input.keyboard.wasPressed(Input.Keys.L)) {
+            this.attack();
+        }
 
         this.vel = this.vel.add(new Vector(xspeed * delta, yspeed*delta));
         this.vel = new Vector(xspeed, this.vel.y);
@@ -125,6 +126,9 @@ export class Bubbles extends Actor {
 
     attack(){
 
+        const bubBullet = new BubBullets();
+        bubBullet.pos = this.pos.clone();
+        this.scene.add(bubBullet);
     }
 
 }
