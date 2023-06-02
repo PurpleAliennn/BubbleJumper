@@ -39,7 +39,10 @@ export class Level1 extends Scene {
     onActivate(ctx){
 
         this.bubbles.pos = new Vector(10, 500);
+
         this.crabRed.pos = new Vector(625, 314);
+
+        this.bubbles.reset()
 
     }
 

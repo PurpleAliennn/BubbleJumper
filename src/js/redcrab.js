@@ -8,7 +8,7 @@ import { Platform } from "./platform.js";
 export class RedCrab extends Actor {
 
     damage
-    health
+    health = 100;
 
     constructor(){
         super({
@@ -26,6 +26,14 @@ export class RedCrab extends Actor {
         this.graphics.add(Resources.RedCrab.toSprite());
         this.scale = new Vector (0.3,0.3);
 
+        this.actions.repeatForever((ctx) => {
+
+            ctx.moveBy(-80, 0, 50)
+
+            ctx.moveBy(80, 0, 50)
+
+        })
+
         this.on('collisionstart', (event) => { this.hit(event)} );
     }
 
@@ -35,5 +43,15 @@ export class RedCrab extends Actor {
             event.other.takeDamage(25);
             //remove half heart health from Bubbles`
         }
+    }
+
+    getHit(amount){
+
+        this.health -= amount;
+
+        if(this.health < 1 ){
+           this.kill();
+        }
+
     }
 }

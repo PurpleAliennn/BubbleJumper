@@ -1,4 +1,4 @@
-import { Actor, CollisionType, Vector, Shape, Input } from "excalibur";
+import { Actor, CollisionType, Vector, Shape, Input, Timer } from "excalibur";
 import { Resources, ResourceLoader } from './resources.js';
 import { Bottom } from "./bottomborder.js";
 import { Platform } from "./platform.js";
@@ -11,6 +11,7 @@ export class Bubbles extends Actor {
     health = 100;
     damage
     grounded
+    timer
 
 
     constructor(){
@@ -22,6 +23,12 @@ export class Bubbles extends Actor {
             width: 100,
             collider: circle
         });
+
+        this.timer = new Timer({
+            fcn: () => this.graphics.use('HappyBubbles'),
+            repeats: false,
+            interval: 1000,
+        })
     }
 
     onActivate(ctx) {
@@ -46,11 +53,14 @@ export class Bubbles extends Actor {
         this.graphics.use('HappyBubbles');
 
         this.on('collisionstart', (event) => { this.isGrounded(event)} );
+
+        this.game.currentScene.add(this.timer);
     }
 
     reset(){
 
         this.graphics.use('HappyBubbles');
+        this.health = 100;
         
     }
 
@@ -98,11 +108,14 @@ export class Bubbles extends Actor {
                 yspeed = -40;
                 this.grounded = false;
                 this.game.currentScene.bubbleJump(this.pos.x, this.pos.y);
+ 
             }
         }
 
         if(engine.input.keyboard.wasPressed(Input.Keys.L)) {
             this.attack();
+            this.graphics.use('MadBubbles');
+            this.timer.start();
         }
 
         this.vel = this.vel.add(new Vector(xspeed * delta, yspeed*delta));
@@ -118,6 +131,7 @@ export class Bubbles extends Actor {
         this.health -= amount;
 
         this.graphics.use('SadBubbles');
+        this.timer.start();
 
         if(this.health < 1 ){
             this.game.goToScene('gameOver', new GameOver());

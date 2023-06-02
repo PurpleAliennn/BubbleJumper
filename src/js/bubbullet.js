@@ -1,4 +1,4 @@
-import { Actor, Vector, Color, Random, CollisionType } from 'excalibur'
+import { Actor, Vector, Color, Random, CollisionType, Shape } from 'excalibur'
 import { Resources } from './resources.js'
 
 import { RedCrab } from './redcrab.js';
@@ -9,11 +9,14 @@ import { Cloud } from './cloud.js';
 
 export class BubBullets extends Actor {
 
-    constructor(x, y) {
+    constructor(x, y) { 
+
+        const circle = Shape.Circle(90);
 
         super({ 
             x: x + Math.random() * 50, 
-            y: y + Math.random() * 50 
+            y: y + Math.random() * 50,
+            collider: circle
         })
 
         this.rand = new Random();
@@ -22,7 +25,8 @@ export class BubBullets extends Actor {
 
     onInitialize(engine) {
 
-        this.body.collisionType = CollisionType.Fixed;
+        this.body.collisionType = CollisionType.Active;
+        this.body.useGravity = false;
 
         let sprArray = [
 
@@ -49,6 +53,10 @@ export class BubBullets extends Actor {
             this.kill();
         } 
 
+        if(event.other instanceof Right){
+            this.kill();
+        } 
+
         if(event.other instanceof Platform){
             this.kill();
         } 
@@ -56,11 +64,10 @@ export class BubBullets extends Actor {
         if(event.other instanceof Cloud){
             this.kill();
         } 
-    }
 
-    bulletDamage(event){
         if(event.other instanceof RedCrab){
-
+            event.other.getHit(50);
+            this.kill();
         }
     }
     
