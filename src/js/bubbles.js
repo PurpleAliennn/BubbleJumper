@@ -26,9 +26,7 @@ export class Bubbles extends Actor {
     onActivate(ctx) {
 
         this.bubbles.pos = new Vector(10, 500);
-      
         this.bubbles.reset();
-      
     }
 
     onInitialize(engine){
@@ -102,6 +100,10 @@ export class Bubbles extends Actor {
             }
         }
 
+        // if(engine.input.keyboard.wasPressed(Input.Keys.L)) {
+        //     this.attack();
+        // }
+
         this.vel = this.vel.add(new Vector(xspeed * delta, yspeed*delta));
         this.vel = new Vector(xspeed, this.vel.y);
 
@@ -119,10 +121,6 @@ export class Bubbles extends Actor {
         if(this.health < 1 ){
             this.game.goToScene('gameOver', new GameOver());
         }
-    }
-   
-    run(){
-        
     }
 
     attack(){
