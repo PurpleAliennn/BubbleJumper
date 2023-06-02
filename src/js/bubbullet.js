@@ -40,7 +40,7 @@ export class BubBullets extends Actor {
         this.rotation = Math.random() * 2;
         this.vel = new Vector(200 , 0);
 
-        this.on("collisionstart", (event) => this.onCollision(event));
+        this.on("collisionstart", (event) => this.bulletPop(event));
 
     }
 
