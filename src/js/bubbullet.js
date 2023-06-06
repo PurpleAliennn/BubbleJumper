@@ -72,13 +72,13 @@ export class BubBullets extends Actor {
         if(event.other instanceof RedCrab){
             event.other.getHit(50);
             this.kill();
-            //this.game.currentScene.points(5);
+            this.game.currentScene.points(5);
         }
 
         if(event.other instanceof BlueCrab){
             event.other.getHit(50);
             this.kill();
-            //this.game.currentScene.points(10);
+            this.game.currentScene.points(10);
         }
     }
     

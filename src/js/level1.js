@@ -49,8 +49,13 @@ export class Level1 extends Scene {
 
         this.point += amount;
         console.log("eyyy puntennn " + this.point);
-        this.label.text = `points: ${ this.point}`;
+        // this.label.text = `points: ${ this.point}`;
+        this.ui.updatePoints(this.point)
 
+    }
+
+    hearts(value){
+        this.ui.updateHealth(value);
     }
 
     onActivate(ctx){
@@ -66,6 +71,9 @@ export class Level1 extends Scene {
         this.bubbles.reset()
 
         this.point = 0;
+        
+        this.ui = new UI();
+        this.add(this.ui);
 
     }
 
@@ -73,21 +81,6 @@ export class Level1 extends Scene {
 
         const background = new BackGround();
         this.add(background);
-
-        // this.label = new Label({
-        //     text: `points: ${ this.point}`,
-        //     pos: new Vector(10, 450),
-        //     color: Color.Black,
-        //     font: new Font({
-        //         family: 'Arial',
-        //         size: 48,
-        //         unit: FontUnit.Px
-        //     })
-        // });
-
-        // this.add(this.label);
-        this.ui = new UI();
-        this.add(this.ui);
 
         const sand = new Bottom();
         this.add(sand);
@@ -150,5 +143,10 @@ export class Level1 extends Scene {
             cloud.pos = p;
             this.add(cloud);
           }
+
+    }
+
+    onDeactivate() {
+        this.ui.kill()
     }
 }

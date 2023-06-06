@@ -134,6 +134,18 @@ export class Bubbles extends Actor {
         this.graphics.use('SadBubbles');
         this.timer.start();
 
+        if(this.health < 76) {
+            this.scene.hearts(3);
+        }
+
+        if(this.health < 51) {
+            this.scene.hearts(2);
+        }
+
+        if(this.health <26) {
+            this.scene.hearts(1);
+        }
+
         if(this.health < 1 ){
             this.game.goToScene('gameOver', new GameOver());
         }
