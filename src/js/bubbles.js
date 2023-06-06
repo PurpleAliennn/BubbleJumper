@@ -65,7 +65,7 @@ export class Bubbles extends Actor {
     }
 
     isGrounded(event){
-
+        console.log("Collsion start");
         if(event.other instanceof Bottom){
             console.log("you're on the floor");
             this.grounded = true;
@@ -89,26 +89,25 @@ export class Bubbles extends Actor {
 
 
         if(engine.input.keyboard.isHeld(Input.Keys.D)) {
-           xspeed = 230;
+           xspeed = 240;
         }
 
         if(engine.input.keyboard.isHeld(Input.Keys.A)) {
-            xspeed = -230;
+            xspeed = -240;
         }
 
         console.log(this.grounded)
         
         if(this.grounded) {
             if(engine.input.keyboard.wasPressed(Input.Keys.Space)) {
-                yspeed = -30;
+                yspeed = -500;
                 this.grounded = false;
             }
         
             if(engine.input.keyboard.wasPressed(Input.Keys.B)) {
-                yspeed = -40;
+                yspeed = -650;
                 this.grounded = false;
                 this.game.currentScene.bubbleJump(this.pos.x, this.pos.y);
- 
             }
         }
 
@@ -118,8 +117,14 @@ export class Bubbles extends Actor {
             this.timer.start();
         }
 
-        this.vel = this.vel.add(new Vector(xspeed * delta, yspeed*delta));
-        this.vel = new Vector(xspeed, this.vel.y);
+        // this.vel = this.vel.add(new Vector(xspeed * delta, yspeed*delta));
+        // this.vel = new Vector(xspeed, this.vel.y);
+        this.vel = new Vector(
+            xspeed ,
+            this.vel.y + yspeed
+        )
+        console.log(this.vel);
+        console.log(yspeed);
 
         engine.currentScene.camera.y = this.pos.y - 175;
 
