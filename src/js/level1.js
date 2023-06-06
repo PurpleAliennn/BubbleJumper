@@ -1,4 +1,4 @@
-import { Actor, Engine, Vector, Label, FontUnit, Font, Physics, Scene } from "excalibur";
+import { Actor, Engine, Vector, Label, FontUnit, Font, Physics, Scene, Color } from "excalibur";
 //import { Resources, ResourceLoader } from './resources.js';
 
 import { Bubbles } from './bubbles.js';
@@ -10,11 +10,20 @@ import { Platform } from './platform.js';
 import { BackGround } from "./background.js";
 import { Cloud } from "./cloud.js";
 import { Bubs } from "./bubs.js";
+import { UI } from "./pointsOnScreen.js";
+import { BlueCrab } from "./bluecrab.js";
 
 export class Level1 extends Scene {
 
     crabRed
+    crabRed2
+    crabRed3
+
+    crabBlue
+
     bubbles
+
+    point = 0;
 
     constructor(){
         super({
@@ -36,13 +45,27 @@ export class Level1 extends Scene {
         }
     }
 
+    points(amount) {
+
+        this.point += amount;
+        console.log("eyyy puntennn " + this.point);
+        this.label.text = `points: ${ this.point}`;
+
+    }
+
     onActivate(ctx){
 
         this.bubbles.pos = new Vector(10, 500);
 
         this.crabRed.pos = new Vector(625, 314);
+        this.crabRed2.pos = new Vector(645, -855);
+        this.crabRed3.pos = new Vector(565,  -245);
+
+        this.crabBlue.pos = new Vector(645, -1600)
 
         this.bubbles.reset()
+
+        this.point = 0;
 
     }
 
@@ -50,6 +73,21 @@ export class Level1 extends Scene {
 
         const background = new BackGround();
         this.add(background);
+
+        // this.label = new Label({
+        //     text: `points: ${ this.point}`,
+        //     pos: new Vector(10, 450),
+        //     color: Color.Black,
+        //     font: new Font({
+        //         family: 'Arial',
+        //         size: 48,
+        //         unit: FontUnit.Px
+        //     })
+        // });
+
+        // this.add(this.label);
+        this.ui = new UI();
+        this.add(this.ui);
 
         const sand = new Bottom();
         this.add(sand);
@@ -67,6 +105,18 @@ export class Level1 extends Scene {
         this.crabRed = new RedCrab();
         this.add(this.crabRed);
         this.crabRed.pos = new Vector (625, 314);
+
+        this.crabRed2 = new RedCrab();
+        this.add(this.crabRed2);
+        this.crabRed2.pos = new Vector (235, -855)
+
+        this.crabRed3 = new RedCrab();
+        this.add(this.crabRed3);
+        this.crabRed3.pos = new Vector (565,  -245);
+
+        this.crabBlue = new BlueCrab();
+        this.add(this.crabBlue);
+        this.crabBlue.pos = new Vector (645, -1600)
 
         const platform = new Platform();
         this.add(platform);

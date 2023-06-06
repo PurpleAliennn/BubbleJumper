@@ -15,6 +15,7 @@ import gameover from '../images/game_over.png'
 import startover from '../images/start_over.png'
 import madBubbles from '../images/madBubbles.png'
 import sadBubbles from '../images/sadBubbles.png'
+import tempHeart from '../images/heartTemporary.png'
 
 const Resources = {
     Bubbles: new ImageSource(bubblesImage),
@@ -32,7 +33,8 @@ const Resources = {
     GameOver: new ImageSource(gameover),
     StartOver: new ImageSource(startover),
     MadBubbles: new ImageSource(madBubbles),
-    SadBubbles: new ImageSource(sadBubbles)
+    SadBubbles: new ImageSource(sadBubbles),
+    TempHeart: new ImageSource(tempHeart)
 }
 const ResourceLoader = new Loader([
     Resources.Bubbles, 
@@ -50,7 +52,8 @@ const ResourceLoader = new Loader([
     Resources.GameOver,
     Resources.StartOver,
     Resources.MadBubbles,
-    Resources.SadBubbles
+    Resources.SadBubbles,
+    Resources.TempHeart
 ])
 
 export { Resources, ResourceLoader }

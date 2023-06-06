@@ -6,6 +6,7 @@ import { Left } from './leftborder.js';
 import { Right } from './rightborder.js';
 import { Platform } from './platform.js';
 import { Cloud } from './cloud.js';
+import { BlueCrab } from './bluecrab.js';
 
 export class BubBullets extends Actor {
 
@@ -25,6 +26,8 @@ export class BubBullets extends Actor {
 
     onInitialize(engine) {
 
+        this.game = engine;
+
         this.body.collisionType = CollisionType.Active;
         this.body.useGravity = false;
 
@@ -42,6 +45,7 @@ export class BubBullets extends Actor {
 
         this.scale = new Vector(sc, sc);
         this.rotation = Math.random() * 2;
+
         this.vel = new Vector(200 , 0);
 
         this.on("collisionstart", (event) => this.bulletPop(event));
@@ -68,6 +72,13 @@ export class BubBullets extends Actor {
         if(event.other instanceof RedCrab){
             event.other.getHit(50);
             this.kill();
+            //this.game.currentScene.points(5);
+        }
+
+        if(event.other instanceof BlueCrab){
+            event.other.getHit(50);
+            this.kill();
+            //this.game.currentScene.points(10);
         }
     }
     

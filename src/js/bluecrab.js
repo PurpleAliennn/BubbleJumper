@@ -5,15 +5,15 @@ import { Bubbles } from "./bubbles.js";
 import { Bottom } from "./bottomborder.js";
 import { Platform } from "./platform.js";
 
-export class RedCrab extends Actor {
+export class BlueCrab extends Actor {
 
     damage
-    health = 100;
+    health = 200;
 
     constructor(){
         super({
-            width: Resources.RedCrab.width,
-            height: Resources.RedCrab.height
+            width: Resources.BlueCrab.width,
+            height: Resources.BlueCrab.height
         })
     }
 
@@ -23,8 +23,8 @@ export class RedCrab extends Actor {
 
         this.body.collisionType = CollisionType.Active;
 
-        this.graphics.add(Resources.RedCrab.toSprite());
-        this.scale = new Vector (0.3,0.3);
+        this.graphics.add(Resources.BlueCrab.toSprite());
+        this.scale = new Vector (0.4,0.4);
 
         this.actions.repeatForever((ctx) => {
 
@@ -40,7 +40,8 @@ export class RedCrab extends Actor {
     hit(event) {
         if(event.other instanceof Bubbles){
             console.log("Ouch!");
-            event.other.takeDamage(25);
+            event.other.takeDamage(50);
+            //remove half heart health from Bubbles`
         }
     }
 

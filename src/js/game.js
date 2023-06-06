@@ -17,7 +17,7 @@ export class Game extends Engine {
             width: 800, 
             height: 600 
         });
-        //this.showDebug(true);
+        this.showDebug(true);
 
         this.start(ResourceLoader).then(() => this.startGame());
         
