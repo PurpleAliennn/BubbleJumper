@@ -46,22 +46,22 @@ export class UI extends ScreenElement {
                     pos: new Vector(10, 40),
                 },
                 {
-                    graphic: Resources.TempHeart.toSprite(),
+                    graphic: Resources.BubHeart.toSprite(),
                     pos: new Vector(10, 50),
                     scale: new Vector(0.1,0.1)
                 },
                 {
-                    graphic: Resources.TempHeart.toSprite(),
+                    graphic: Resources.BubHeart.toSprite(),
                     pos: new Vector(62, 50),
                     scale: new Vector(0.1,0.1)
                 },
                 {
-                    graphic: Resources.TempHeart.toSprite(),
+                    graphic: Resources.BubHeart.toSprite(),
                     pos: new Vector(114, 50),
                     scale: new Vector(0.1,0.1)
                 },
                 {
-                    graphic: Resources.TempHeart.toSprite(),
+                    graphic: Resources.BubHeart.toSprite(),
                     pos: new Vector(166, 50),
                     scale: new Vector(0.1,0.1)
                 }
