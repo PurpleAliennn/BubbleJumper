@@ -134,7 +134,7 @@ export class Bubbles extends Actor {
         this.graphics.use('SadBubbles');
         this.timer.start();
 
-        if(this.health < 76) {
+        if(this.health < 76) {                   //dit geeft door aan de hearts() functie in level1, hoeveel health staat voor hoeveel hearts
             this.scene.hearts(3);
         }
 
