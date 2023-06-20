@@ -49,14 +49,13 @@ export class Level1 extends Scene {
 
         this.point += amount;
         console.log("eyyy puntennn " + this.point);
-        // this.label.text = `points: ${ this.point}`;
-        this.ui.updatePoints(this.point)
+        this.ui.updatePoints(this.point);                    //deze functie houd de punten bij en stuurt ze weer door naar de UI class
 
     }
 
     hearts(value){
-        this.ui.updateHealth(value);
-    }
+        this.ui.updateHealth(value);                         //deze functies houd de hoeveelheid hartjes bij 
+    }                                                        //(deze hoeveelheid word weer opgehaald vanuit de character class)
 
     onActivate(ctx){
 
@@ -70,10 +69,10 @@ export class Level1 extends Scene {
 
         this.bubbles.reset()
 
-        this.point = 0;
+        this.point = 0;                                      //dit reset het aantal punten wanneer je de game opnieuw doet
         
-        this.ui = new UI();
-        this.add(this.ui);
+        this.ui = new UI();                                  //dit maakt een nieuwe geresette UI aan over je game
+        this.add(this.ui);                                   //de oude word namelijk in de onDeactivate() verwijderd (zie helemaal onderaan de code)
 
     }
 
@@ -147,6 +146,6 @@ export class Level1 extends Scene {
     }
 
     onDeactivate() {
-        this.ui.kill()
+        this.ui.kill();                         //dit verwijderd de oude UI
     }
 }
