@@ -59,15 +59,15 @@ export class Level1 extends Scene {
 
     onActivate(ctx){
 
-        this.bubbles.pos = new Vector(10, 500);
+        this.bubbles.pos = new Vector(10, 500);              //reset de positie van de character
 
-        this.crabRed.pos = new Vector(625, 314);
+        this.crabRed.pos = new Vector(625, 314);             //reset de posities van de rode crabs
         this.crabRed2.pos = new Vector(645, -855);
-        this.crabRed3.pos = new Vector(565,  -245);
+        this.crabRed3.pos = new Vector(565,  -245);         
 
-        this.crabBlue.pos = new Vector(645, -1600)
+        this.crabBlue.pos = new Vector(645, -1600)           //reset de positie van de blauwe crab
 
-        this.bubbles.reset()
+        this.bubbles.reset()                                 //reset functie van de character
 
         this.point = 0;                                      //dit reset het aantal punten wanneer je de game opnieuw doet
         

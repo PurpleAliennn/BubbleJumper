@@ -33,7 +33,7 @@ export class Bubbles extends Actor {
 
     onActivate(ctx) {
 
-        this.bubbles.pos = new Vector(10, 500);
+        this.bubbles.pos = new Vector(10, 500);                     //dit gebeurt elke keer wanneer de character als het ware geactiveerd word
         this.bubbles.reset();
     }
 
@@ -59,7 +59,7 @@ export class Bubbles extends Actor {
 
     reset(){
 
-        this.graphics.use('HappyBubbles');
+        this.graphics.use('HappyBubbles');                        //de reset functie, dit reset de graphics en de hitpoints
         this.health = 100;
         
     }
